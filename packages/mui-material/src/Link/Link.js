@@ -7,11 +7,10 @@ import elementTypeAcceptingRef from '@mui/utils/elementTypeAcceptingRef';
 import composeClasses from '@mui/utils/composeClasses';
 import isFocusVisible from '@mui/utils/isFocusVisible';
 import capitalize from '../utils/capitalize';
-import { styled, createUseThemeProps } from '../zero-styled';
+import { styled, createUseThemeProps, useTheme } from '../zero-styled';
 import Typography from '../Typography';
 import linkClasses, { getLinkUtilityClass } from './linkClasses';
 import getTextDecoration, { colorTransformations } from './getTextDecoration';
-import useTheme from '../styles/useTheme';
 
 const useThemeProps = createUseThemeProps('MuiLink');
 
