@@ -24,10 +24,6 @@ module.exports = {
     }),
     // Avoid bundling the whole @mui/icons-material package. x2 the bundling speed.
     new webpack.IgnorePlugin({ resourceRegExp: /material-icons\/SearchIcons\.js/ }),
-    new webpack.ProvidePlugin({
-      // required by enzyme > cheerio > parse5 > util
-      process: 'process/browser.js',
-    }),
   ],
   module: {
     rules: [
@@ -57,10 +53,6 @@ module.exports = {
     fallback: {
       // Exclude polyfill and treat 'fs' as an empty module since it is not required. next -> gzip-size relies on it.
       fs: false,
-      // needed by enzyme > cheerio
-      stream: false,
-      // required by enzyme > cheerio > parse5
-      util: require.resolve('util/'),
       // Exclude polyfill and treat 'zlib' as an empty module since it is not required. next -> gzip-size relies on it.
       zlib: false,
     },
