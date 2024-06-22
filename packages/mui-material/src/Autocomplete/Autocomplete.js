@@ -210,6 +210,7 @@ const AutocompleteRoot = styled('div', {
       style: {
         [`& .${autocompleteClasses.input}`]: {
           opacity: 1,
+          pointerEvents: 'none',
         },
       },
     },
