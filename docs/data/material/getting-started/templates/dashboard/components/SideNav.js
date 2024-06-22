@@ -22,6 +22,8 @@ import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
 
 import MenuButton from './MenuButton';
 import ToggleColorMode from './ToggleColorMode';
+import MenuContent from './MenuContent';
+import CardAlert from './CardAlert';
 
 const accountsList = [
   { label: 'Profile', icon: <AccountCircleRoundedIcon sx={{ fontSize: 20 }} /> },
@@ -38,14 +40,11 @@ function SideNav({ open, toggleDrawer, mode, toggleColorMode }) {
     <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
       <Stack
         sx={{
+          maxWidth: '70dvw',
           gap: 2,
-          minWidth: '80dvw',
-          p: 3,
-          backgroundColor: 'background.paper',
-          flexGrow: 1,
         }}
       >
-        <Stack direction="row" sx={{ gap: 1 }}>
+        <Stack direction="row" sx={{ p: 2, pb: 0, gap: 1 }}>
           <Stack direction="row" sx={{ gap: 1, alignItems: 'center', flexGrow: 1 }}>
             <Avatar
               sizes="small"
@@ -62,7 +61,9 @@ function SideNav({ open, toggleDrawer, mode, toggleColorMode }) {
           </MenuButton>
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
         </Stack>
-        <Stack sx={{ gap: 2 }}>
+        <Divider />
+        <Stack>
+          <MenuContent />
           <Divider />
           <List>
             {accountsList.map((item, index) => (
@@ -84,11 +85,12 @@ function SideNav({ open, toggleDrawer, mode, toggleColorMode }) {
             ))}
           </List>
         </Stack>
-        <Stack>
+        <Stack sx={{ p: 2 }}>
           <Button variant="outlined" fullWidth startIcon={<LogoutRoundedIcon />}>
             Logout
           </Button>
         </Stack>
+        <CardAlert />
       </Stack>
     </Drawer>
   );

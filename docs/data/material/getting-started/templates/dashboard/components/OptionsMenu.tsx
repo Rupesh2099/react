@@ -1,11 +1,16 @@
 import * as React from 'react';
+import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { MenuItem as MuiMenuItem } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
 import MenuButton from './MenuButton';
+
+const MenuItem = styled(MuiMenuItem)({
+  margin: '2px 0',
+});
 
 export default function OptionsMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -18,7 +23,7 @@ export default function OptionsMenu() {
   };
   return (
     <React.Fragment>
-      <MenuButton onClick={handleClick}>
+      <MenuButton aria-label="Open menu" onClick={handleClick}>
         <MoreVertRoundedIcon />
       </MenuButton>
       <Menu
@@ -29,8 +34,13 @@ export default function OptionsMenu() {
         onClick={handleClose}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        sx={{
+          '& .MuiPaper-root': {
+            padding: 0,
+          },
+        }}
       >
-        <MenuItem sx={{ mt: 1 }}>
+        <MenuItem>
           <Avatar
             sizes="small"
             alt="Riley Carter"

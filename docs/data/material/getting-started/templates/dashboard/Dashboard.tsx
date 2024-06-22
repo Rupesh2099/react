@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { PaletteMode } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, alpha } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import getDashboardTheme from './getDashboardTheme';
+import Stack from '@mui/material/Stack';
+import getDashboardTheme from './theme/getDashboardTheme';
 import ToggleCustomTheme from './internals/components/ToggleCustomTheme';
-import Copyright from './internals/components/Copyright';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import MainGrid from './components/MainGrid';
+import SideMenu from './components/SideMenu';
 
 export default function Dashboard() {
   const [mode, setMode] = React.useState<PaletteMode>('light');
@@ -30,29 +30,30 @@ export default function Dashboard() {
       <CssBaseline />
       <Box sx={{ display: 'flex' }}>
         <Navbar mode={mode} toggleColorMode={toggleColorMode} />
+        <SideMenu />
+        {/* Main content */}
         <Box
           component="main"
-          sx={{
-            backgroundColor: 'background.default',
+          sx={(theme) => ({
             flexGrow: 1,
-            height: '100vh',
+            top: '64px',
+            position: 'relative',
+            height: 'calc(100vh - 64px)',
+            backgroundColor: alpha(theme.palette.background.paper, 0.4),
             overflow: 'auto',
-          }}
+          })}
         >
-          {/* Main content */}
-          <Container
-            maxWidth="xl"
+          <Stack
+            spacing={2}
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              py: { xs: 14, sm: 16 },
-              gap: 2,
+              alignItems: 'center',
+              mx: 3,
+              pb: 10,
             }}
           >
             <Header />
             <MainGrid />
-            <Copyright sx={{ my: 4 }} />
-          </Container>
+          </Stack>
         </Box>
         <ToggleCustomTheme
           showCustomTheme={showCustomTheme}

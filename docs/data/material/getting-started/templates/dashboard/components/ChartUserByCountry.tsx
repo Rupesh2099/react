@@ -180,6 +180,7 @@ export default function ChartUserByCountry() {
               </Stack>
               <LinearProgress
                 variant="determinate"
+                aria-label="Number of users by country"
                 value={country.value}
                 sx={{
                   [`& .${linearProgressClasses.bar}`]: {
