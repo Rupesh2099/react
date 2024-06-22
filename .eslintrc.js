@@ -418,7 +418,7 @@ module.exports = {
       },
     },
     {
-      files: ['packages/*/src/**/*{.ts,.tsx,.js}'],
+      files: ['packages/**/*{.ts,.tsx,.js}'],
       excludedFiles: ['*.d.ts', '*.spec.ts', '*.spec.tsx'],
       rules: {
         'no-restricted-imports': [
@@ -436,7 +436,7 @@ module.exports = {
             ],
           },
         ],
-        'import/no-cycle': ['error', { ignoreExternal: true }],
+        'import/no-cycle': ['error', { ignoreExternal: false }],
       },
     },
     {
