@@ -80,10 +80,6 @@ module.exports = function setKarmaConfig(config) {
           'process.env.KARMA': JSON.stringify(true),
           'process.env.TEST_GATE': JSON.stringify('enable-dispatching-profiler'),
         }),
-        new webpack.ProvidePlugin({
-          // required by enzyme > cheerio > parse5 > util
-          process: 'process/browser.js',
-        }),
       ],
       module: {
         rules: [
@@ -108,8 +104,6 @@ module.exports = function setKarmaConfig(config) {
           // needed by sourcemap
           fs: false,
           path: false,
-          // needed by enzyme > cheerio
-          stream: false,
         },
       },
       // TODO: 'browserslist:modern'
